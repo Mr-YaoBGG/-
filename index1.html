@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				height: 100%;
+				overflow: hidden;
+			}
+			#wrap{
+				height: 100%;
+			}
+			#mask{
+				position: absolute;
+				left: 0;
+				top: 0;
+				transition:1s opacity;
+				z-index: 10;
+			}
+			#wrap #list{
+				position: relative;
+				width: 100%;
+				height: 100%;
+			}
+			#wrap #list li{
+				opacity: 0;
+				/*transition: 1s;*/
+			}
+			#wrap #list .active{
+				opacity: 1;
+				z-index: 5;
+			}
+			#wrap #list .first{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background: url(img/b.png) no-repeat;
+				background-size:100% 100% ;
+			}
+			#wrap #list .first ul{
+				position: absolute;
+				left: 128px;
+				top: 690px;
+			}
+			#wrap #list .first ul li{
+				color: white;
+				font-size: 30px;
+			}
+			#wrap #list .second{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background: url(img/c.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			
+			#wrap #list .second ul li{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate3d(-50%,-50%,0);
+			}
+			#wrap #list .thirst{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background: url(img/d.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			#wrap #list .thirst .text{
+				position: absolute;
+				left: 50%;
+				top: 70%;
+				transform: translate3d(-50%,-50%,0);
+			}
+			#wrap #list .fourth{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background: url(img/e.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			#wrap #list .fourth ul li{
+				font-size: 22px;
+			    color: white;
+			    border: 1px #FFF solid;
+			    box-shadow: 0 0 15px #FFF;
+			    border-radius: 5px;
+			    word-wrap: break-word;
+			    overflow: hidden;
+			    position: absolute;
+			}
+			#wrap #list .fourth ul li:nth-child(1){
+				width: 220px;
+			    height: 240px;
+			    left: 4%;
+			    top: 13%;
+			}
+			#wrap #list .fourth ul li:nth-child(2){
+				width: 280px;
+			    height: 150px;
+			    left: 50%;
+			    top: 16%;
+			}
+			#wrap #list .fourth ul li:nth-child(3){
+				width: 110px;
+			    height: 280px;
+			    left: 78%;
+			    top: 37%;
+			}
+			#wrap #list .fifth{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background: url(img/f.png) no-repeat;
+				background-size: 100% 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<canvas id="mask"></canvas>
+			<ul id="list">
+				<li class="first active">
+					<ul class="list">
+						<li><p>曾经做为前端开发的你</p></li>
+						<li><p>解决PC兼容性而焦头烂额</p></li>
+						<li><p>而今</p></li>
+						<li><p>移动端H5应用疯狂来袭</p></li>
+						<li><p>你是否已准备充分</p></li>
+						<li><p>学习新技能</p></li>
+						<li><p>曾破茧成蝶、重获新生？</p></li>
+					</ul>
+				</li>
+				<li class="second">
+					<ul class="list">
+						<li>
+							<img src="img/c1.png"/>
+						</li>
+						<li>
+							<img src="img/c2.png"/>
+						</li>
+						<li>
+							<img src="img/c3.png"/>
+						</li>
+						<li>
+							<img src="img/c4.png"/>
+						</li>
+						<li>
+							<img src="img/c5.png"/>
+						</li>
+						<li>
+							<img src="img/c6.png"/>
+						</li>
+					</ul>
+				</li>
+				<li class="thirst">
+					<div class="text">
+						<img src="img/d1.png"/>
+					</div>
+				</li>
+				<li class="fourth">
+					<ul class="list">
+						<li>transform  transition  rotate  scale  translate  keyframes animation  webkitTransitionEnd webkitAnimationIteration elapsedTime perspective…</li>
+						<li>drawImage lineWidth  strokeStyle  lineCap  globalCompositeOperation  moveTo   lineTo  stroke  arc  getImageData…</li>
+						<li>audio autoplay loop  paused  play  pause…</li>
+					</ul>
+				</li>
+				<li class="fifth">
+					
+				</li>
+			</ul>
+		</div>
+	</body>
+	<!--<script type="text/javascript" src="js/transform.js"></script>-->
+	<script type="text/javascript">
+/*		document.addEventListener("touchstart",function(ev){
+			var ev =ev||event;
+			ev.preventDefault();
+		});*/
+		document.addEventListener('touchstart', function(event) {
+		    // 判断默认行为是否可以被禁用
+		    if (event.cancelable) {
+			        // 判断默认行为是否已经被禁用
+			        if (!event.defaultPrevented) {
+			            event.preventDefault();
+			        }
+			    }
+			}, false);
+		
+		
+		//viewport适配
+		(function(){
+			var targetW = 640; 
+			var width = document.documentElement.clientWidth;
+			var scale = width/targetW;
+			
+			var metaNode =document.querySelector("meta[name='viewport']");
+			metaNode.setAttribute("content","initial-scale="+scale+",user-scalable=no");
+		})();
+		
+		
+		window.onload=function(){
+			var oc = document.querySelector("#mask");
+			var index = 0;
+//			var arr = [#list .first, #list .second, #list .thirst, #list .fourth, #list .fifth];
+			var liNodes = document.querySelectorAll('#list > li');
+			
+			//滑屏
+					var startY = 0;
+					var moveY = 0;
+					var timer
+					var height = document.documentElement.offsetHeight
+					for(var i=0; i<liNodes.length; i++){
+						liNodes[i].index = i;
+						
+					liNodes[i].addEventListener('touchstart', function(ev){
+						ev=ev||event;
+						var touchC = ev.changedTouches[0];
+						startY = touchC.clientY;
+//						liNodes[i].style.left = 0;
+//						liNodes[i].style.top = 0;
+						this.style.transition = '';
+					});
+					liNodes[i].addEventListener('touchmove', function(ev){
+						ev=ev||event;
+						var touchC = ev.changedTouches[0];
+						moveY = touchC.clientY-startY;
+//						console.log(moveY);
+//						this.style.top =moveY+"px";
+						liNodes[this.index].style.transform ="translateY("+moveY+"px)";
+						clearTimeout(timer)
+						timer= setTimeout(function(){
+							for(var i=0; i<liNodes.length; i++){
+								liNodes[i].style.transition = "all 1s"
+							}
+						}, 50)
+					});
+					liNodes[i].addEventListener('touchend', function(ev){
+//						setTimeout(function(){
+//							for(var i=0; i<liNodes.length; i++){
+//								liNodes[i].style.transition = "all 1s"
+//							}
+//						}, 20)
+						ev=ev||event;
+						var touchC = ev.changedTouches[0];
+						if(moveY < 0 && Math.abs(moveY) >= height/3){
+							//向上翻面
+							moveY = -height;
+//							this.style.top =moveY+"px";
+							liNodes[this.index].style.transform ="translateY("+moveY+"px)";
+							liNodes[this.index].classList.remove('active')
+//							liNodes[this.index].className.replace('active',' ');
+							if(this.index === 4){
+								this.index === 0
+							};
+							liNodes[this.index + 1].className += ' active';
+							console.log(liNodes[this.index + 1])
+//							console.log(this.index+1)
+							liNodes[this.index].style.transform ="translateY(0px)";
+						}else if(moveY > 0 && moveY >= height/3){
+							//向下翻面
+							moveY = height;
+//							this.style.top =moveY+"px";
+							console.log(this.index)
+							
+							if(this.index === 5){
+								liNodes[0].style.transform ="translateY("+moveY+"px)";
+								liNodes[0].classList.remove('active')
+								liNodes[0].style.transform ="translateY(0px)";
+							}else{
+								liNodes[this.index].style.transform ="translateY(0px)";
+							}
+							
+							liNodes[this.index].style.transform ="translateY("+moveY+"px)";
+							liNodes[this.index].classList.remove('active')
+							
+							if(this.index === 0){
+								this.index = 5
+							}
+							console.log(liNodes[this.index - 1])
+//							console.log(this.index);
+							liNodes[this.index - 1].className += ' active';
+							if(this.index === 5){
+								liNodes[0].style.transform ="translateY(0px)";
+							}else{
+								liNodes[this.index].style.transform ="translateY(0px)";
+							}
+							
+							console.log(this.index);
+						}else{
+							//回到原来位置
+//							console.log(this);
+//							moveY = 0;
+							liNodes[this.index].style.transform ="translateY(0px)";
+							
+						};
+						
+					});
+				}
+			
+			oc.width = document.documentElement.clientWidth;
+			oc.height = document.documentElement.clientHeight;
+			if(oc.getContext){
+				var ctx = oc.getContext("2d");
+				
+				var img =new Image();
+				img.src="img/a.png";
+				img.onload=function(){
+					draw(this);
+				}
+			}
+			
+			function draw(img){
+				ctx.drawImage(img,0,0,oc.width,oc.height);
+				
+				oc.addEventListener('touchstart',function(ev){
+					var ev =ev||event;
+					var touchC = ev.changedTouches[0];
+					
+					var x = touchC.clientX - this.offsetLeft;
+					var y = touchC.clientY - this.offsetTop;
+					
+					ctx.globalCompositeOperation="destination-out";
+					ctx.lineWidth=200;
+					ctx.lineCap="round";
+					
+					ctx.beginPath();
+					ctx.moveTo(x,y);
+					ctx.lineTo(x+1,y+1);
+					ctx.stroke();
+					
+					
+				});
+				oc.addEventListener('touchmove',function(){
+					var ev =ev||event;
+					var touchC = ev.changedTouches[0];
+					
+					var x = touchC.clientX - this.offsetLeft;
+					var y = touchC.clientY - this.offsetTop;
+					
+					ctx.lineTo(x,y);
+					ctx.stroke();
+				});
+				oc.addEventListener("touchend",function(){
+					
+					var imgData = ctx.getImageData(0,0,oc.width,oc.height);
+					var flag =0;
+					var allPx = imgData.width * imgData.height;
+					for(var i=0;i<allPx;i++){
+						if(imgData.data[4*i+3] == 0){
+							flag++;
+						}
+					}
+					
+					
+					if(flag > allPx/2){
+						oc.style.opacity=0;
+					}
+					
+				})
+			
+				oc.addEventListener("transitionend",function(){
+					this.remove();
+				})
+			}
+		}
+	</script>
+	
+</html>
